@@ -1,0 +1,47 @@
+---
+import BentoItem from "./BentoItem.astro";
+---
+
+<section
+  class={`
+    w-full max-w-[1400px]
+    grid grid-cols-10 auto-rows-[30rem] gap-4
+    mx-auto p-20
+    `}
+>
+  <BentoItem 
+  class="col-span-10 md:col-span-4" 
+  title="CAS: Unidad Organizativa"
+  >
+    <div
+      slot="image"
+      class="absolute left-0 top-0 bottom-0 w-full
+      h-full group-hover:scale-110 transition-scale duration-1000
+      ease-int-out opacity-90 bg-blen-luminosity bg-center bg-cover bg-no-repeat
+      bg-yellow-600 -z-10"
+      style="background-image: url('/tech-blue.jpg');"
+    >
+    </div>
+
+    <p slot="content" class="max-w-xl">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam, quis nostrud <strong>important</strong> ullamco laboris nisi ut aliquip
+      ex ea commodo consequat.
+    </p>
+  </BentoItem>
+  <BentoItem
+    class="col-span-10 md:col-span-6"
+    title="RAS: Unidad Organizativa"
+  >
+  
+  <BentoItem
+    class="col-span-10 md:col-span-6"
+    title="PES: Unidad Organizativa"
+  />
+  <BentoItem
+    class="col-span-10 md:col-span-4"
+    title="CS: Unidad Organizativa"
+    subtitle="La mejor unidad"
+  />
+</section>
