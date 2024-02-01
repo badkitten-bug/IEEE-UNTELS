@@ -2,9 +2,13 @@
 import { SignIn, SignOut } from "auth-astro/components";
 import { getSession } from "auth-astro/server";
 const session = await getSession(Astro.request);
-import Home from "../components/Home.astro"
-import About from "../components/About.astro"
-import Notice from "../components/Notive.astro"
+import Home from "../components/Home.astro";
+import About from "../components/About.astro";
+import Notice from "../components/Notive.astro";
+import { supabase } from "../../public/supabase";
+
+let { data: users, error } = await supabase.from("users").select("*");
+console.log(users, error);
 ---
 
 <html lang="en">
@@ -30,8 +34,14 @@ import Notice from "../components/Notive.astro"
         </>
       )
     }
-    <Home title="Rama Estudiantil IEEE Untels" subTitle="Rama Estudiantil IEEE de la Universidad Nacional Tecnológica de Lima Sur (UNTELS), desde 2011"></Home>
-    <Notice title="Bienvenido a la sección de Noticias de la Rama Estudiantil IEEE Untels" subTitle="En esta sección, mantente al tanto de todas las últimas novedades, eventos emocionantes y logros destacados de nuestra comunidad estudiantil IEEE en la Universidad de Tecnología y Ciencias Aplicadas Untels"></Notice>
-    <About></About>
+    <Home
+      title="Rama Estudiantil IEEE UNTELS"
+      subTitle="Rama Estudiantil IEEE de la Universidad Nacional Tecnológica de Lima Sur (UNTELS), desde 2011"
+    />
+    <Notice
+      title="Bienvenido a la sección de Noticias de la Rama Estudiantil IEEE UNTELS"
+      subTitle="En esta sección, mantente al tanto de todas las últimas novedades, eventos emocionantes y logros destacados de nuestra comunidad estudiantil IEEE en la UNTELS"
+    />
+    <About />
   </body>
 </html>
