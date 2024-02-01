@@ -1,28 +1,36 @@
 ---
-import { SignIn, SignOut } from "auth-astro/components";
+/* import { SignIn, SignOut } from "auth-astro/components";
 import { getSession } from "auth-astro/server";
-const session = await getSession(Astro.request);
-import Home from "../components/Home.astro";
-import About from "../components/About.astro";
-import Notice from "../components/Notive.astro";
-import { supabase } from "../../public/supabase";
+const session = await getSession(Astro.request); */
+import Layout from "../components/Layout.astro";
+import Intro from "../components/Intro.astro";
+import Bento from "../components/Bento.astro";
+import PreFooter from "../components/PreFooter.astro";
+import Footer from "../components/Footer.astro";
+import ImageHome from "../components/ImageHome.astro";
+/* import { supabase } from "../../public/supabase";
 
 let { data: users, error } = await supabase.from("users").select("*");
-console.log(users, error);
+console.log(users, error); */
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Astro</title>
-  </head>
-  <body class="bg-gray-600">
-    <h1>IEEE</h1>
-    {
-      session ? (
+<Layout
+  title="Rama estudiantil IEEE UNTELS con más de 13 años en la Universidad Nacional Tecnológica de Lima Sur."
+  description="Descubre una de las mejores comunidades para poder realizar y conocer personas con la misma pasión en las ramas de Ingeniería! \
+  Únete y comparte con nosotros, tenemos cursos gratuitos, talleres, eventos y mucho más."
+>
+  <main>
+    <Intro />
+    <Bento />
+    <PreFooter />
+  </main>
+
+  <Footer />
+</Layout>
+
+<style></style>
+<!-- Authenticating with Google -->
+<!--     {session ? (
         <>
           <p>Hola {session.user?.email}</p>
           <SignOut>Cerrar Sesion</SignOut>
@@ -33,15 +41,4 @@ console.log(users, error);
           <SignIn provider="github"> Iniciar con Github </SignIn>
         </>
       )
-    }
-    <Home
-      title="Rama Estudiantil IEEE UNTELS"
-      subTitle="Rama Estudiantil IEEE de la Universidad Nacional Tecnológica de Lima Sur (UNTELS), desde 2011"
-    />
-    <Notice
-      title="Bienvenido a la sección de Noticias de la Rama Estudiantil IEEE UNTELS"
-      subTitle="En esta sección, mantente al tanto de todas las últimas novedades, eventos emocionantes y logros destacados de nuestra comunidad estudiantil IEEE en la UNTELS"
-    />
-    <About />
-  </body>
-</html>
+    } -->
