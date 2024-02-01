@@ -2,6 +2,9 @@
 import { SignIn, SignOut } from "auth-astro/components";
 import { getSession } from "auth-astro/server";
 const session = await getSession(Astro.request);
+import Home from "../components/Home.astro"
+import About from "../components/About.astro"
+import Notice from "../components/Notive.astro"
 ---
 
 <html lang="en">
@@ -12,8 +15,8 @@ const session = await getSession(Astro.request);
     <meta name="generator" content={Astro.generator} />
     <title>Astro</title>
   </head>
-  <body>
-    <h1>Astro</h1>
+  <body class="bg-gray-600">
+    <h1>IEEE</h1>
     {
       session ? (
         <>
@@ -27,5 +30,8 @@ const session = await getSession(Astro.request);
         </>
       )
     }
+    <Home title="Rama Estudiantil IEEE Untels" subTitle="Rama Estudiantil IEEE de la Universidad Nacional Tecnológica de Lima Sur (UNTELS), desde 2011"></Home>
+    <Notice title="Bienvenido a la sección de Noticias de la Rama Estudiantil IEEE Untels" subTitle="En esta sección, mantente al tanto de todas las últimas novedades, eventos emocionantes y logros destacados de nuestra comunidad estudiantil IEEE en la Universidad de Tecnología y Ciencias Aplicadas Untels"></Notice>
+    <About></About>
   </body>
 </html>
