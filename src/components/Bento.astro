@@ -4,44 +4,91 @@ import BentoItem from "./BentoItem.astro";
 
 <section
   class={`
-    w-full max-w-[1400px]
-    grid grid-cols-10 auto-rows-[30rem] gap-4
-    mx-auto p-20
-    `}
+  w-full max-w-[1400px]
+  grid lg:grid-cols-10 auto-rows-[30rem] gap-4
+  mx-auto p-20
+  `}
 >
-  <BentoItem 
-  class="col-span-10 md:col-span-4" 
-  title="CAS: Unidad Organizativa"
-  >
+  <BentoItem class="col-span-10 lg:col-span-6" title="CAS: Unidad Organizativa">
     <div
       slot="image"
-      class="absolute left-0 top-0 bottom-0 w-full
-      h-full group-hover:scale-110 transition-scale duration-1000
-      ease-int-out opacity-90 bg-blen-luminosity bg-center bg-cover bg-no-repeat
-      bg-yellow-600 -z-10"
+      class="background transition-scale absolute bottom-0 left-0 top-0
+      -z-10 h-full w-full bg-yellow-600
+      bg-cover bg-center bg-no-repeat opacity-90 bg-blend-luminosity duration-1000 ease-in-out group-hover:scale-110"
+      style="background-image: url('/tech-blue.jpg');"
+    >
+    </div>
+    <p slot="content" class="max-w-xl"></p>
+  </BentoItem>
+  <BentoItem class="col-span-10 lg:col-span-4" title="CAS: Unidad Organizativa">
+    <div
+      slot="image"
+      class="background transition-scale absolute bottom-0 left-0 top-0
+      -z-10 h-full w-full bg-yellow-600
+      bg-cover bg-center bg-no-repeat opacity-90 bg-blend-luminosity duration-1000 ease-in-out group-hover:scale-110"
       style="background-image: url('/tech-blue.jpg');"
     >
     </div>
 
-    <p slot="content" class="max-w-xl">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-      veniam, quis nostrud <strong>important</strong> ullamco laboris nisi ut aliquip
-      ex ea commodo consequat.
-    </p>
+    <p slot="content" class="max-w-xl text-base md:text-lg"></p>
   </BentoItem>
-  <BentoItem
-    class="col-span-10 md:col-span-6"
-    title="RAS: Unidad Organizativa"
-  >
-  
-  <BentoItem
-    class="col-span-10 md:col-span-6"
-    title="PES: Unidad Organizativa"
-  />
-  <BentoItem
-    class="col-span-10 md:col-span-4"
-    title="CS: Unidad Organizativa"
-    subtitle="La mejor unidad"
-  />
+  <BentoItem class="col-span-10 md:col-span-4" title="CAS: Unidad Organizativa">
+    <div
+      slot="image"
+      class="background transition-scale absolute bottom-0 left-0 top-0
+      -z-10 h-full w-full bg-yellow-600
+      bg-cover bg-center bg-no-repeat opacity-90 bg-blend-luminosity duration-1000 ease-in-out group-hover:scale-110"
+      style="background-image: url('/tech-blue.jpg');"
+    >
+    </div>
+
+    <p slot="content" class="max-w-xl text-base md:text-lg"></p>
+  </BentoItem>
+  <BentoItem class="col-span-10 lg:col-span-6" title="CAS: Unidad Organizativa">
+    <div
+      slot="image"
+      class="background transition-scale absolute bottom-0 left-0 top-0
+      -z-10 h-full w-full bg-yellow-600
+      bg-cover bg-center bg-no-repeat opacity-90 bg-blend-luminosity duration-1000 ease-in-out group-hover:scale-110"
+      style="background-image: url('/tech-blue.jpg');"
+    >
+    </div>
+
+    <p slot="content" class="max-w-xl"></p>
+  </BentoItem>
 </section>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const backgrounds = document.querySelectorAll(
+      ".background"
+    ) as NodeListOf<HTMLElement>;
+
+    if (window.IntersectionObserver == null) {
+      backgrounds.forEach((bkg) => {
+        bkg.style.backgroundImage = "url('" + bkg.dataset.src + "')";
+      });
+      return;
+    }
+
+    function handleIntersection(entries: IntersectionObserverEntry[]) {
+      entries.map((entry) => {
+        if (entry.isIntersecting) {
+          const target = entry.target as HTMLElement;
+          const { style, dataset } = target;
+          // Item has crossed our observation
+          // threshold - load src from data-src
+          style.backgroundImage = "url('" + dataset.src + "')";
+          // Job done for this item - no need to watch it!
+          observer.unobserve(entry.target);
+        }
+      });
+    }
+
+    const observer = new IntersectionObserver(handleIntersection, {
+      rootMargin: "100px",
+    });
+
+    backgrounds.forEach((bkg) => observer.observe(bkg));
+  });
+</script>
