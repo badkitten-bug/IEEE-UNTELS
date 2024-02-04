@@ -24,7 +24,7 @@ const $$Layout = createComponent(async ($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro$8, $$props, $$slots);
   Astro2.self = $$Layout;
   const { description, title } = Astro2.props;
-  return renderTemplate`<html lang="es"> <head><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><title>${title}</title>${renderHead()}</head> <body> ${renderComponent($$result, "Header", $$Header, {})} ${renderSlot($$result, $$slots["default"])} </body></html>`;
+  return renderTemplate`<html lang="es"> <head><meta name="viewport" content="width=device-width"><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><title>${title}</title>${renderHead()}</head> <body> ${renderComponent($$result, "Header", $$Header, {})} ${renderSlot($$result, $$slots["default"])} </body></html>`;
 }, "C:/Users/Steve/Escritorio/IEEE-PAGE/src/components/Layout.astro", void 0);
 
 const SEO_TITLE$1 = "Branch IEEE UNTELS with more than 13 years at the National University of Technology of Lima Sur.";
