@@ -20,11 +20,19 @@
 			"dest": "_render"
 		},
 		{
-			"src": "^\\/$",
+			"src": "^\\/en\\/?$",
 			"dest": "_render"
 		},
 		{
-			"src": "^\\/en\\/?$",
+			"src": "^\\/en\\/archivo\\/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/en\\/info\\/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/$",
 			"dest": "_render"
 		}
 	]
